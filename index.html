@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMUNK MOD - Mods</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mod.css">
+    <link rel="stylesheet" href="../css/mod-cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="../js/security.js"></script>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <style>
+        .header {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .main-content {
+            margin-top: 5rem;
+            padding: 2rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #2a2a2a;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            border-radius: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #00ff88;
+            color: #1a1a1a;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            /* background: #2a2a2a; */ /* Removed background color */
+            /* border-radius: 0.9375rem; */ /* Removed border-radius */
+            /* overflow: hidden; */ /* Removed overflow */
+            /* transition: transform 0.3s; */ /* Removed transition */
+            /* position: relative; */ /* Removed position */
+            border: none; /* Remove border */
+            box-shadow: none; /* Remove box-shadow */
+        }
+
+        /* .game-card:hover { */
+        /* transform: translateY(-5px); */ /* Remove hover transform */
+        /* } */
+
+        .game-image {
+            width: 100%;
+            height: 12.5rem;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 1.5rem;
+        }
+
+        .game-title {
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .game-description {
+            color: #888;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #1a1a1a;
+            border: none;
+            padding: 0.8rem;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Estilo do painel lateral */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -30rem;
+            width: 30rem;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            padding: 2.5rem;
+            box-shadow: -0.5rem 0 2rem rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            overflow-y: auto;
+            border-left: 2px solid #00ff88;
+        }
+
+        .side-panel.open {
+            transform: translateX(-30rem);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .panel-title {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .close-panel {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-panel:hover {
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .mod-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .mod-image {
+            width: 100%;
+            height: 15rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mod-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .mod-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .mod-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mod-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .mod-description {
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .mod-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .mod-actions {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            color: #1a1a1a;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .download-btn i {
+            font-size: 1.2rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .preview-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .preview-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .filter-specification {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 1rem;
+            margin-left: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 1.25rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                SMUNK MOD
+            </div>
+            <nav class="nav-links">
+                <a class='home-link' href='/'><i class="fas fa-home"></i> Home</a>
+                <a href='/html/mod'><i class="fas fa-puzzle-piece"></i>Mods</a>
+                <a href='/html/conta'><i class="fas fa-user"></i>Conta</a>
+                <a href='/html/compras'><i class="fas fa-shopping-cart"></i>Compras</a>
+                <a href='/html/discord'><i class="fab fa-discord"></i>Discord</a>
+                <a href='/html/anticheat'><i class="fas fa-shield-alt"></i>Anticheat</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="filters">
+            <input type="text" id="searchBar" placeholder="Pesquisar mods..." style="padding: 0.5rem; border-radius: 1.25rem; border: 1px solid #ccc; width: 100%; max-width: 300px;">
+            <button class="filter-btn">Todos</button>
+            <button class="filter-btn">Populares</button>
+            <button class="filter-btn">Recentes</button>
+            <button class="filter-btn">Premium</button>
+            <button class="filter-btn">FREE</button>
+            <button class="filter-btn">FREE</button>
+        </div>
+
+        <div class="games-grid" id="gamesGrid">
+            <!-- Os cards serão carregados dinamicamente aqui -->
+        </div>
+    </main>
+
+    <!-- Painel lateral para detalhes do mod -->
+    <div class="side-panel">
+        <div class="panel-header">
+            <h2 class="panel-title">Detalhes do Mod</h2>
+            <button class="close-panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mod-content">
+            <div class="mod-image">
+                <img src="" alt="Imagem do Mod">
+            </div>
+            <div class="mod-info">
+                <h3 class="mod-title"></h3>
+                <p class="mod-description"></p>
+                <div class="mod-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Downloads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Avaliação</div>
+                    </div>
+                </div>
+                <div class="mod-actions">
+                    <button class="download-btn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="preview-btn">
+                        <i class="fas fa-eye"></i>
+                        Visualizar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for offline mod warning -->
+    <div id="offlineModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; justify-content: center; align-items: center; animation: fadeIn 0.3s;">
+        <div style="background: linear-gradient(135deg, #1a1a1a, #2a2a2a); padding: 2rem; border-radius: 1rem; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); position: relative; animation: slideIn 0.4s;">
+            <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff4d4d, #cc0000); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
+                <i class="fas fa-exclamation-triangle" style="color: #fff; font-size: 1.5rem;"></i>
+            </div>
+            <h2 style="color: #ff4d4d; margin-top: 2rem; font-size: 1.5rem;">Mod Offline</h2>
+            <p id="offlineMessage" style="color: #ccc; margin: 1rem 0 2rem; font-size: 1rem; line-height: 1.5;">Este mod está atualmente offline. Ele não está disponível para compra ou download no momento. Por favor, volte mais tarde para verificar se ele está online novamente.</p>
+            <button onclick="closeOfflineModal()" style="background: linear-gradient(135deg, #ff4d4d, #cc0000); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 0.5rem; cursor: pointer; font-weight: bold; transition: all 0.3s; box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Floating warning icon -->
+    <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #ff4d4d; cursor: pointer; animation: float 3s ease-in-out infinite;" title="Aviso" onclick="redirectToAviso()"></i>
+    </div>
+
+    <script>
+        // Function to redirect to the aviso.html page
+        function redirectToAviso() {
+            window.location.href = "aviso.html";
+        }
+    </script>
+
+    <script>
+        async function loadGamesWithValidation() {
+            const response = await fetch('../banco de dados/database.json');
+            const data = await response.json();
+            const gamesGrid = document.getElementById('gamesGrid');
+
+            data.games.forEach(game => {
+                if (!game.title || !game.status || !game.price) {
+                    console.warn(`Mod inválido encontrado: ${JSON.stringify(game)}`);
+                    return;
+                }
+
+                const card = document.createElement('div');
+                card.classList.add('game-card');
+                card.setAttribute('data-category', game.category.toLowerCase().replace(' ', '-'));
+                card.setAttribute('data-title', game.title.toLowerCase());
+                card.innerHTML = `
+                    <div style="position: absolute; top: 10px; right: 10px; background: ${game.status === 'online' ? 'linear-gradient(135deg, #00ff88, #00cc6a)' : 'linear-gradient(135deg, #ff4d4d, #cc0000)'}; color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-transform: uppercase;">
+                        ${game.status}
+                    </div>
+                    <img src="${game.imageLink || game.image}" alt="${game.title}" class="game-image">
+                    <div class="game-info">
+                        <h3 class="game-title">${game.title}</h3>
+                        <p class="game-description">${game.description}</p>
+                        <div class="game-stats">
+                            <span><i class="fas fa-crown"></i> ${game.category}</span>
+                            <span><i class="fas fa-download"></i> ${game.downloads}</span>
+                        </div>
+                        <button onclick="redirectToCompras(this)" class="action-btn" 
+                            data-title="${game.title}"
+                            data-description="${game.description}"
+                            data-image="${game.imageLink || game.image}"
+                            data-downloads="${game.downloads}"
+                            data-price="${game.price}"
+                            data-status="${game.status}">MODS</button>
+                    </div>
+                `;
+                gamesGrid.appendChild(card);
+            });
+
+            // Add search functionality
+            const searchBar = document.getElementById('searchBar');
+            searchBar.addEventListener('input', () => {
+                const query = searchBar.value.toLowerCase();
+                const cards = document.querySelectorAll('.game-card');
+                cards.forEach(card => {
+                    const title = card.getAttribute('data-title');
+                    card.style.display = title.includes(query) ? 'block' : 'none';
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadGamesWithValidation);
+    </script>
+    <script>
+        function redirectToCompras(button) {
+            const title = button.getAttribute('data-title');
+            const description = button.getAttribute('data-description');
+            const image = button.getAttribute('data-image');
+            const downloads = button.getAttribute('data-downloads');
+            const price = button.getAttribute('data-price');
+            const status = button.getAttribute('data-status');
+
+            if (status === 'offline') {
+                document.getElementById('offlineMessage').textContent = `O mod "${title}" está offline e não pode ser acessado.`;
+                document.getElementById('offlineModal').style.display = 'flex';
+                return;
+            }
+
+            // Redirecionar para a página de compras com os parâmetros
+            window.location.href = `compras.html?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}&downloads=${encodeURIComponent(downloads)}&price=${encodeURIComponent(price)}`;
+        }
+
+        function closeOfflineModal() {
+            document.getElementById('offlineModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
