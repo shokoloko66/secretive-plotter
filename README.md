@@ -1,15 +1,15 @@
-# EpinelPS
+# Secretive Plotter
 
 ---
 
 <div align="center">
 
-[![GitHub issues](https://img.shields.io/github/issues/MishaProductions/nikke-server?style=flat-square)](https://github.com/MishaProductions/nikke-server/issues)
-[![GitHub pr](https://img.shields.io/github/issues-pr/MishaProductions/nikke-server?style=flat-square)](https://github.com/MishaProductions/nikke-server/pulls)
-[![GitHub](https://img.shields.io/github/license/MishaProductions/nikke-server?style=flat-square)](https://github.com/MishaProductions/nikke-server/blob/main/LICENSE)
-![GitHub release (with filter)](https://img.shields.io/github/downloads-pre/MishaProductions/nikke-server/latest/total?style=flat-square)
-![GitHub Repo stars](https://img.shields.io/github/stars/MishaProductions/nikke-server?style=flat-square)
-[![Discord](https://img.shields.io/discord/1261717212448952450?style=flat-square)](https://discord.gg/Ztt6Y9vQjF)
+[![GitHub issues](https://img.shields.io/github/issues/MishaProductions/nikke-server?style=flat-square)](https://github.com/shokoloko66/secretive-plotter/issues)
+[![GitHub pr](https://img.shields.io/github/issues-pr/MishaProductions/nikke-server?style=flat-square)](https://github.com/shokoloko66/secretive-plotter/pulls)
+[![GitHub](https://img.shields.io/github/license/MishaProductions/nikke-server?style=flat-square)](https://github.com/shokoloko66/secretive-plotter/blob/main/LICENSE)
+![GitHub release (with filter)](https://img.shields.io/github/downloads-pre/shokoloko66/secretive-plotter/latest/total?style=flat-square)
+![GitHub Repo stars](https://img.shields.io/github/stars/shokoloko66/secretive-plotter?style=flat-square)
+[![Discord](https://img.shields.io/discord/1261717212448952450?style=flat-square)](https://discord.gg/zAGgZE77)
 
 </div>
 cheese for a gooner game.
