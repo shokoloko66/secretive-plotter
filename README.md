@@ -17,7 +17,7 @@ cheese for a gooner game.
 Discord server: https://discord.gg/zAGgZE77
 
 > [!CAUTION]
-> Please note this GitHub repository (https://github.com/shokoloko66/secretive-plotter) is the only official source for Secretive Plotter. **If you bought it from someone, you got scammed. Do not download EpinelPS from other sources.** Download link: https://github.com/shokoloko66/secretive-plotter/releases
+> Please note this GitHub repository (https://github.com/shokoloko66/secretive-plotter) is the only official source for Secretive Plotter. **If you bought it from someone, you got scammed. Do not download My cheese from other sources.** Download link: https://github.com/shokoloko66/secretive-plotter/releases
 
 > [!WARNING]
 > This project is in an early state so many functions in the game do not work. It is recommended to download the latest build from GitHub actions.
